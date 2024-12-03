@@ -8,22 +8,17 @@ export function attendanceLogger() {
     if (!player) return
 
     executeTask(async () => {
-      let data = await postRecord(player.userId, 'ENTER')
-      console.log('ENTER', data)
+      await postRecord(player.userId, 'ENTER')
+      console.log('DEBUG: ENTER', player.userId, player)
     })
-
-    // rest of the code keeps being executed
-    console.log('ENTERED SCENE', player)
   })
 
   onLeaveScene((userId) => {
     if (!userId) return
 
     executeTask(async () => {
-      let data = await postRecord(userId, 'EXIT')
-      console.log('EXIT', data)
+      await postRecord(userId, 'EXIT')
+      console.log('DEBUG: EXIT', userId)
     })
-
-    console.log('LEFT SCENE', userId)
   })
 }
